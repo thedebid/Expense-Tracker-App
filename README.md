@@ -1,6 +1,6 @@
 # Expense Tracker App
 
-This is a expense tracker app made with functional components,hooks and context-api
+This is a expense tracker app made with functional components, hooks and context-api
 
 # Overview
 
@@ -11,6 +11,6 @@ This is a expense tracker app made with functional components,hooks and context-
 #Install the dependencies
 npm install
 
- #Run app
+#Run app
 npm start
 ```

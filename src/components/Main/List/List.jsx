@@ -17,53 +17,23 @@ import useStyles from "./styles";
 function List() {
   const classes = useStyles();
 
-  const { deleteTransaction } = useContext(ExpenseTrackerContext);
+  const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
 
-  const transctions = [
-    {
-      id: 1,
-      type: "Income",
-      category: "Salary",
-      amount: 30,
-      date: "Sat Jan 02 2021",
-    },
-    {
-      id: 2,
-      type: "Expense",
-      category: "Salary",
-      amount: 30,
-      date: "Sat Jan 02 2021",
-    },
-    {
-      id: 3,
-      type: "Income",
-      category: "Salary",
-      amount: 30,
-      date: "Sat Jan 02 2021",
-    },
-    {
-      id: 4,
-      type: "Income",
-      category: "Salary",
-      amount: 30,
-      date: "Sat Jan 02 2021",
-    },
-  ];
   return (
     <MUList dense={false} className={classes.list}>
-      {transctions.map((transction) => (
+      {transactions.map((transaction) => (
         <Slide
           direction="down"
           in
           mountOnEnter
           unmountOnExit
-          key={transction.id}
+          key={transaction.id}
         >
           <ListItem>
             <ListItemAvatar>
               <Avatar
                 className={
-                  transction.type === "Income"
+                  transaction.type === "Income"
                     ? classes.avatarIncome
                     : classes.avatarExpense
                 }
@@ -72,11 +42,15 @@ function List() {
               </Avatar>
             </ListItemAvatar>
             <ListItemText
-              primary={transction.category}
-              secondary={`$${transction.amount} - ${transction.date}`}
+              primary={transaction.category}
+              secondary={`$${transaction.amount} - ${transaction.date}`}
             />
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete" onClick="">
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={() => deleteTransaction(transaction.id)}
+              >
                 <Delete />
               </IconButton>
             </ListItemSecondaryAction>
